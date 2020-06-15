@@ -27,6 +27,5 @@ class UnitResourceCollection extends ResourceCollection
         }
 
         return $units;
-
     }
 }

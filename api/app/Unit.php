@@ -7,7 +7,7 @@ use Illuminate\Support\Arr;
 
 class Unit extends Model
 {
-    protected $guarded =[];
+    protected $guarded = [];
     /**
      * @var array
      */
