@@ -15,5 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-    Route::ApiResource('/units', 'UnitController')
-        ->only(['index', 'show']);
+Route::ApiResource('/units', 'UnitController')
+    ->only(['index', 'show']);
+
+Route::post('/units/{unitId}', 'UnitController@store')->name('units.charge.store');
