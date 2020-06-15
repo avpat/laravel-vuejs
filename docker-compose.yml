@@ -2,12 +2,14 @@ version: '3'
 
 networks:
   laravel:
+    driver: bridge
 
 volumes:
   mysql:
     driver: local
 
 services:
+
   nginx:
     image: nginx:stable-alpine
     container_name: podpoint-api
@@ -24,8 +26,8 @@ services:
       - laravel
 
   mysql:
-    image: mysql:5.7.29
-    container_name: mysql
+    image: mysql:5.7
+    container_name: podpoint-mysql
     restart: unless-stopped
     tty: true
     volumes:
@@ -59,25 +61,25 @@ services:
       - ./api:/var/www/html
     ports:
       - "9000:9000"
+    links:
+    - mysql
     networks:
       - laravel
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
     ports:
     - "8085:80"
     links:
-    - mysql:db
+    - mysql
     restart: unless-stopped
     tty: true
     environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: mysql
       SERVICE_NAME: phpmyadmin
       SERVICE_TAGS: dev
-    working_dir: /var/www/html
-  tester:
-    build:
-      context: .
-      dockerfile: tester.Dockerfile
 
   frontend:
     build:
