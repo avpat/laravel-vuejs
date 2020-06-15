@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Unit;
-use App\Charge;
 
 class ChargeController extends Controller
 {
@@ -94,7 +93,7 @@ class ChargeController extends Controller
             } else {
                 return response()->json([
                     'error' => [
-                        'message'       => 'An error occured. Id\'s wont match',
+                        'message'       => 'An error occured. Id\'s did not match',
                         'unitId'        => $unitId,
                         'chargeId'      => $chargeId,
                         'statusCode'    => 400
