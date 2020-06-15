@@ -30,4 +30,24 @@ class UnitController extends Controller
         return new UnitResource($unit);
     }
 
+    /**
+     * @param Request $request
+     * @param $unitId
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function store(Request $request, $unitId)
+    {
+
+        //create the Unit and store the charge in the table
+        $request->validate([
+            'start' => 'required'
+        ]);
+        $start = $request->input('start');
+
+        $unit = Unit::firstOrNew(['id' => $unitId]);
+
+        $unit->charges()->create(['start' => $start]);
+
+        return response()->json($unit, 201);
+    }
 }
