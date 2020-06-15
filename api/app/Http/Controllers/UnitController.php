@@ -10,6 +10,7 @@ class UnitController extends Controller
 {
     public function index():UnitResourceCollection
     {
-        return new UnitResourceCollection(Unit::paginate());
+        return new UnitResourceCollection(Unit::all());
     }
+
 }

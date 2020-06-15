@@ -14,6 +14,19 @@ class UnitResourceCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        $units = array();
+        foreach ($this->resource as $unit) {
+            $units[] = array(
+                'id'        => $unit->id,
+                'address'   => $unit->address,
+                'postcode'  => $unit->postcode,
+                'name'      => $unit->name,
+                'status'    => $unit->status,
+                'charges'   => ChargeResource::collection($unit->charges),
+            );
+        }
+
+        return $units;
+
     }
 }
