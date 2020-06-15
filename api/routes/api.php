@@ -16,4 +16,4 @@ use Illuminate\Support\Facades\Route;
 
 
     Route::ApiResource('/units', 'UnitController')
-        ->only(['index', 'store']);
+        ->only(['index', 'show']);

@@ -14,7 +14,6 @@ class ChargeResourceCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        //return parent::toArray($request);
         $charges = array();
         foreach ($this->resource as $charge) {
             $charges[] = array(
