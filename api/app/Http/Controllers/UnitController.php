@@ -31,6 +31,9 @@ class UnitController extends Controller
     }
 
     /**
+     * Create a charge on a given unit
+     * Used when a charge starts on a given unit
+     *
      * @param Request $request
      * @param $unitId
      * @return \Illuminate\Http\JsonResponse
@@ -40,14 +43,29 @@ class UnitController extends Controller
 
         //create the Unit and store the charge in the table
         $request->validate([
-            'start' => 'required'
+            'start' => 'required|date_format:Y-m-d H:i:s'
         ]);
+
         $start = $request->input('start');
 
-        $unit = Unit::firstOrNew(['id' => $unitId]);
+        //0 = available,  1 = charging
 
-        $unit->charges()->create(['start' => $start]);
+        $unit = Unit::find($unitId);
 
-        return response()->json($unit, 201);
+        if($unit->update(['status' => 1]))
+        {
+            if($unit->charges()->create(['start' => $start]))
+            {
+                return response()->json([
+                    'message'   => 'Successful operation',
+                    'description'   => 'The fresh ID generated for the added entity.'
+                ], 200);
+            }
+
+        } else {
+            return response()->json([
+                'message' => 'Invalid request (invalid unit ID or body)',
+            ], 400);
+        }
     }
 }

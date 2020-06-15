@@ -18,7 +18,7 @@ class CreateUnitsTable extends Migration
             $table->string('name');
             $table->string('address');
             $table->string('postcode');
-            $table->integer('status');
+            $table->tinyInteger('status');
             $table->timestamps();
         });
     }
