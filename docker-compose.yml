@@ -1,8 +1,8 @@
 version: '3'
 
 networks:
-  laravel:
-    driver: bridge
+  front_fronetendnet:
+    external: true
 
 volumes:
   mysql:
@@ -22,8 +22,8 @@ services:
     depends_on:
       - php
       - mysql
-    networks:
-      - laravel
+#    networks:
+#      - laravel
 
   mysql:
     image: mysql:5.7
@@ -42,8 +42,8 @@ services:
       MYSQL_ROOT_PASSWORD: secret
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
-    networks:
-      - laravel
+#    networks:
+#      - laravel
 
   #App Service
   php:
@@ -63,8 +63,8 @@ services:
       - "9000:9000"
     links:
     - mysql
-    networks:
-      - laravel
+#    networks:
+#      - laravel
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
@@ -80,20 +80,20 @@ services:
       PMA_HOST: mysql
       SERVICE_NAME: phpmyadmin
       SERVICE_TAGS: dev
-
-  frontend:
-    build:
-      context: .
-    container_name: podpoint-front
-    ports:
-      - "8080:80"
-    volumes:
-      - ./front/public:/var/www/html
-    depends_on:
-      - php
-      - mysql
-    networks:
-      - laravel
+#
+#  frontend:
+#    build:
+#      context: .
+#    container_name: podpoint-front
+#    ports:
+#      - "8080:80"
+#    volumes:
+#      - ./front/public:/var/www/html
+#    depends_on:
+#      - php
+#      - mysql
+#    networks:
+#      - laravel
 
   swagger-ui:
     image: swaggerapi/swagger-ui
@@ -105,5 +105,5 @@ services:
     environment:
       SWAGGER_JSON: /api-docs-swagger.json
       # API_URL: ""
-    networks:
-      - laravel
+#    networks:
+#      - laravel
