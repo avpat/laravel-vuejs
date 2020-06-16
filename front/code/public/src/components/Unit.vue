@@ -6,8 +6,8 @@
                     </div>
                     <div class="column is-7 has-text-left"> 
                         <div>
-                            <p class="is-size-6 font-medium">{{unit.name}}</p>
-                            <p class="is-size-7 has-text-grey is-justified">{{ unit.address   }} {{ unit.postcode }}</p>
+                            <p class="is-size-6 font-medium is-text-darkgrey">{{unit.name}}</p>
+                            <p class="is-size-7 is-text-darkgrey is-justified">{{ unit.address }} {{ unit.postcode }}</p>
                             <p class="is-size-10 is-right">{{ unit.charges.length == 0 ? "No charges yet" : unit.charges.length + " charge(s)" }} </p>
                         </div>  
                     </div>
@@ -34,13 +34,14 @@ export default {
 
 <style lang="scss" scoped>
     .unit {
-        padding: 10px 0;
+        padding: 15px 0;
         border-bottom: 1px solid rgb(169,169,169);
     }
     .button {
         border-radius: 0;
+        font-weight: 600;
+        padding: 0;
         min-width: 85px;
-        padding: 0 0.2em;
         min-width: 66px;
     }
     .textcolour.available {
@@ -77,6 +78,9 @@ export default {
     }
     .is-horizontal-center {
     justify-content: center;
+    }
+    .is-text-darkgrey {
+        color: rgb(15, 15, 15);
     }
 
 </style>
