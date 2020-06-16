@@ -1,35 +1,31 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
-    {{ units }}
+        <section class="hero is-primary">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">
+                        Unit
+                    </h1>
+                </div>
+            </div>
+        </section>
   </div>
 </template>
 
 <script>
-import axios from "axios";
-axios.defaults.baseURL 
+import HelloWorld from './components/HelloWorld.vue'
+
 export default {
   name: 'App',
   components: {
-
-  },
-  data(){
-      return {
-          units: Object
-      }
-  },
-  mounted () {
-      axios
-      .get(`/api/units`)
-      .then(response => (this.units = response))
+    HelloWorld
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
