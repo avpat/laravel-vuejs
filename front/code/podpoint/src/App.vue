@@ -2,12 +2,28 @@
   <div id="app">
     <img src="./assets/logo.png">
     <router-view/>
+    {{ units }}
   </div>
 </template>
 
 <script>
+import axios from "axios";
+axios.defaults.baseURL 
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+
+  },
+  data(){
+      return {
+          units: Object
+      }
+  },
+  mounted () {
+      axios
+      .get(`/api/units`)
+      .then(response => (this.units = response))
+  }
 }
 </script>
 
