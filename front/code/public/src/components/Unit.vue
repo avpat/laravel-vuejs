@@ -8,16 +8,22 @@
                         <div>
                             <p class="is-size-6 font-medium is-text-darkgrey">{{unit.name}}</p>
                             <p class="is-size-7 is-text-darkgrey is-justified">{{ unit.address }} {{ unit.postcode }}</p>
-                            <p class="is-size-10 is-right">{{ unit.charges.length == 0 ? "No charges yet" : unit.charges.length + " charge(s)" }} </p>
+                            <p class="is-size-10 is-right">
+
+                                <span v-if="Object.keys(unit.charges).length > 1">
+                                    {{Object.keys(unit.charges).length}}  charge(s) </span>
+                                <span v-else-if="typeof(unit.charges) != 'undefined' && Object.keys(unit.charges).length == 1" >1 charge </span>
+                                <span v-else>No charges yet</span>
+                            </p>
                         </div>  
                     </div>
                     <div class="column is-3 has-text-centered right-column">
                         <div>
                             <div class="is-uppercase is-size-7 textcolour" :class="unit.status" >{{unit.status}}</div>
-                            <button
+                             <button
                                 @click="toggleStatus()" class="button " :class="unit.status" >
                                 {{ unit.status  == "available" ? "Start" : "Stop" }}
-                            </button>
+                            </button> 
                         </div>
                     </div>
                 </div>
