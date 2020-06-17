@@ -19,4 +19,4 @@ Route::ApiResource('/units', 'UnitController')
     ->only(['index', 'show']);
 
 Route::post('/units/{unitId}', 'ChargeController@store')->name('charge.store');
-Route::post('/units/{unitId}/charges/{chargeId}', 'ChargeController@update')->name('charge.update');
+Route::patch('/units/{unitId}/charges/{chargeId}', 'ChargeController@update')->name('charge.update');
