@@ -11,6 +11,6 @@ class ChargeTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Charge::class, 10)->create();
+        factory(App\Charge::class, 20)->create();
     }
 }

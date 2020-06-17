@@ -10,6 +10,6 @@ $factory->define(Unit::class, function (Faker $faker) {
         'name'      => $faker->name,
         'address'   => $faker->address,
         'postcode'  => $faker->postcode,
-        'status'    => $faker->numberBetween(0, 1)
+        'status'    => 0
     ];
 });
