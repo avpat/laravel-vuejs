@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Charge extends Model
 {
-    protected $fillable = ['id', 'start', 'end'];
+    protected $fillable = ['id', 'unit_id', 'start', 'end'];
 
     public $timestamps = false;
 
