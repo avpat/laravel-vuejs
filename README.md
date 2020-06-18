@@ -118,7 +118,7 @@ The test is split into 2 sections presenting the need for back end & front end:
 * I've prepared a docker equivalent emvironment with `docker-compose` file.  Which can be installed by following command 
 `docker-compose build & docker-compose up -d`
 * If needed, I've added installation instruction in the section [Docker Installation Notes](#the-installation)
-
+* I've tested the code on the swagger-ui. I've implemented api's with Postman. The postman collection can be imported from the link. [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/ebec28b9a285ec35d95e)
 
 
 * Backend `Laravel` Framework : `api` folder
